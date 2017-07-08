@@ -1,0 +1,13 @@
+{
+    "name": "plansys/db",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Rizky",
+            "email": "rizky@andromedia.co.id"
+        }
+    ],
+    "require": {
+        "plansys/yard": "^0.0.4"
+    }
+}
