@@ -1,3 +1,16 @@
 <js:this.state.tag>
-    asdas
+    <js>
+        if (this.state.debug) { 
+            return <el>
+                <pre>
+                    <js> 
+                        if (this.state.loading) {
+                            return 'Loading...'
+                        }
+                    </js>
+                    <js>JSON.stringify(this.state.result, null, 2)</js>
+                </pre>
+            </el>
+        }
+    </js>
 </js:this.state.tag>

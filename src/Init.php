@@ -28,19 +28,10 @@ class Init
         return call_user_func_array([$this->notorm, $func], $args);
     }
 
-    public static function query($page, $params)
+    public static function query($page, $spec, $params)
     {
-        $dbs = [];
-        foreach ($this->settings as $k => $v) {
-            if (is_object($v) && get_class($v) == '\Plansys\Db\Init') {
-                $dbs[$k] = $v;
-            }
-        }
-        var_dump($dbs);
-        die();
-
-        $query = new Query($dbs, $page);
-        return $query->getResult($params);
+        $query = new Query($page);
+        return $query->getResult($spec, $params);
     }
 
     public static function getBase($host)

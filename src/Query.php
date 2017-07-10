@@ -7,9 +7,18 @@ class Query
     private $result;
     private $page;
     private $dbs;
+    private $app;
 
-    function __construct(array $dbs, \Yard\Page $page)
+    function __construct(\Yard\Page $page)
     {
+        $dbs = [];
+        $this->app = &$page->base->settings;
+        foreach ($this->app as $k => $v) {
+            if (is_object($v) && get_class($v) == 'Plansys\Db\Init') {
+                $dbs[$k] = $v;
+            }
+        }
+
         $this->page = $page;
         $this->dbs = $dbs;
     }
@@ -17,9 +26,10 @@ class Query
     public function getResult($spec, $rawParams = null)
     {
         $params = json_decode($rawParams, true);
+
         $page = &$this->page;
         if (method_exists($page, 'query')) {
-            $this->result = $page->query($params);
+            $this->result = $page->query($this->app, $params);
         } else if (property_exists($page, 'query')) {
             if (!is_array($page->query)) {
                 throw new \Exception('Property $query must be an array in class . ' . get_class($this));
@@ -36,14 +46,6 @@ class Query
         }
 
         return $this->result;
-    }
-
-    public function parseQuery($spec, $params) {
-        return [];
-    }
-
-    public function query($params) {
-        return [];
     }
 
 }

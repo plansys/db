@@ -7,14 +7,16 @@ class Query extends \Yard\Page
     public $norender = true;
 
     public function js() {
-        return $this->loadFile('Query.js');
+        return $this->loadFile('QueryLib.js','Query.js');
     }
 
-    public function propsTypes() {
+    public function propTypes() {
         return [
             'spec' => 'string.isRequired',
             'tag' => 'string',
-            'params' => 'object'
+            'debug' => 'string',
+            'params' => 'object',
+            'bind' => 'function'
         ];
     }
 
