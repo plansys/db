@@ -8,12 +8,14 @@
         }
     ],
     "require": {
-        "plansys/yard": "^0.0.4"
+        "plansys/yard": "^0.0.4",
+        "doctrine/dbal": "2.5.x-dev",
+        "plansys/notorm": "^0.0.0"
     },
     "autoload": {
         "psr-4": {
-            "Test\\": "src/"
+            "Plansys\\Db\\": "src/",
+            "db\\Pages\\": "pages/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
