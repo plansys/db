@@ -9,5 +9,11 @@
     ],
     "require": {
         "plansys/yard": "^0.0.4"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "Test\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
 }
