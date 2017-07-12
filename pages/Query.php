@@ -10,13 +10,17 @@ class Query extends \Yard\Page
         return $this->loadFile('QueryLib.js','Query.js');
     }
 
+    public function css() {
+        return $this->loadFile('Query.css');
+    }
+
     public function propTypes() {
         return [
             'spec' => 'string.isRequired',
             'tag' => 'string',
             'debug' => 'string',
             'params' => 'object',
-            'bind' => 'function'
+            'onDone' => 'function',
         ];
     }
 
