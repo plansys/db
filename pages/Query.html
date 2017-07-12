@@ -28,7 +28,7 @@
                             </button>
                             <button 
                                 disabled="js: !this.state.paramsValid"
-                                onClick="js: () => { this.query(this.state.params) } ">Query</button>
+                                onClick="js: () => { this.query(this.state.params, false) } ">Query</button>
                         </div>
                     </div>
                     <js>
@@ -58,7 +58,9 @@
                                     onMouseDown="js: e => { e.stopPropagation();}"
                                     autoComplete="off" autoCorrect="off" 
                                     autoCapitalize="off" spellCheck="false"
-                                    value="js: JSON.stringify(this.state.result, null, 2)" />
+                                    value="js: (typeof this.state.result == 'string' 
+                                    ? this.state.result 
+                                    : JSON.stringify(this.state.result, null, 2))" />
                             </div>
                         </el>
                     }

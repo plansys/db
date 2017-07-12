@@ -11,10 +11,10 @@ let request = obj => {
             if (xhr.status >= 200 && xhr.status < 300) {
                 resolve(xhr.response);
             } else {
-                reject(xhr.statusText);
+                reject(xhr.response);
             }
         };
-        xhr.onerror = () => reject(xhr.statusText);
+        xhr.onerror = () => reject(xhr.response);
         xhr.send(obj.body);
     });
 

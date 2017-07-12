@@ -11,7 +11,7 @@ this.state = {
         y: 0
     },
     debugStatusCode: 0,
-    debugMax: false,
+    debugMax: true,
     drag: false,
     params: null,
     paramsText: '',
@@ -20,7 +20,7 @@ this.state = {
 this.page = false;
 this.promise = false;
 
-this.query = (params) => {
+this.query = (params, execDone = true) => {
     let url = window.yard.url.page.replace('[page]', this.page);
     if (typeof params == "undefined") {
         params = this.props.params;
@@ -49,6 +49,15 @@ this.query = (params) => {
             },
             body: JSON.stringify(params)
         })
+        .catch(result => {
+            if (this.state.debug) {
+                this.setState({
+                    requery: false,
+                    loading: false,
+                    result
+                });
+            }
+        })
         .then(res => {
             let result = res;
 
@@ -62,7 +71,7 @@ this.query = (params) => {
                 result
             });
 
-            if (typeof this.props.onDone === 'function') {
+            if (execDone && typeof this.props.onDone === 'function') {
                 this.props.onDone(result);
             }
         });
