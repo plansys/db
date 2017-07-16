@@ -28,10 +28,10 @@ class Init
         return call_user_func_array([$this->notorm, $func], $args);
     }
 
-    public static function query($page, $spec, $params)
+    public static function query($page, $params)
     {
         $query = new Query($page);
-        return $query->getResult($spec, $params);
+        return $query->getResult($params);
     }
 
     public static function getBase($host)

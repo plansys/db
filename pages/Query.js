@@ -27,22 +27,18 @@ this.query = (params, execDone = true) => {
     }
 
     if (this.state.debug && !this.state.debugMax) {
-        this.setState({debugMax: true});
+        this.setState({ debugMax: true });
     }
 
     this.setState({
         loading: true
     });
 
-    let spec = this.props.spec.split(":");
-    if (spec.length > 1) {
-        spec = spec[1];
-    } else {
-        spec = '';
-    }
+    let page = this.props.page || this.page;
+    
     this.promise = requestLatest(
         {
-            url: url + "...db_" + spec,
+            url: url + "...db_" + page,
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -175,5 +171,5 @@ this.debugStyle = () => {
 this.debugToggle = () => {
     this.setState({
         debugMax: !this.state.debugMax
-    }); 
+    });
 }

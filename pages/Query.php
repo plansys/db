@@ -16,7 +16,7 @@ class Query extends \Yard\Page
 
     public function propTypes() {
         return [
-            'spec' => 'string.isRequired',
+            'page' => 'string.isRequired',
             'tag' => 'string',
             'debug' => 'string',
             'params' => 'object',

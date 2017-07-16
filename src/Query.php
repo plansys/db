@@ -23,10 +23,9 @@ class Query
         $this->dbs = $dbs;
     }
 
-    public function getResult($spec, $rawParams = null)
+    public function getResult($rawParams = null)
     {
         $params = json_decode($rawParams, true);
-
         $page = &$this->page;
         if (method_exists($page, 'query')) {
             $this->result = $page->query($this->app, $params);

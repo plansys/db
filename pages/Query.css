@@ -8,6 +8,7 @@
     align-items:stretch;
     background:white;
     color:black;
+    font-family: sans-serif;
     cursor:pointer;
 }
 .db-query-debug.drag {
@@ -73,10 +74,17 @@
 
 .db-query-content > .result-title,
 .db-query-content > .params-title {
-    font-size:80%;
-    opacity:.6;
+    font-size:90%;
+    opacity:.8;
     user-select:none;
-    padding:3px 0px 0px 3px;
+    display:flex;
+    align-items:center;
+    padding:3px 0px 3px 3px;
     margin-bottom:0px;
     border-bottom:1px solid #ccc;
+}
+
+.db-query-content > .result-title label {
+    display:flex;
+    align-items:center;
 }

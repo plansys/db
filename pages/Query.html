@@ -19,7 +19,7 @@
                     <div className="title">
                         <b>
                             db:Query 
-                            | <js>this.props.spec</js> 
+                            | <js> this.props.page || this.page </js> 
                             | <js> this.state.loading ? '⏰ ' : '' </js>
                         </b>
                         <div className="query" >
@@ -52,7 +52,9 @@
                                     onChange="js: this.paramsChange"
                                     row="5"
                                     value="js: this.state.paramsText "/>
-                                <div className="result-title">Result:</div>
+                                <div className="result-title">
+                                    Result:
+                                </div>
                                 <textarea 
                                     className="result"
                                     onMouseDown="js: e => { e.stopPropagation();}"
@@ -61,6 +63,7 @@
                                     value="js: (typeof this.state.result == 'string' 
                                     ? this.state.result 
                                     : JSON.stringify(this.state.result, null, 2))" />
+                            
                             </div>
                         </el>
                     }
