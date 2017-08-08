@@ -70,6 +70,7 @@ this.query = (params, execDone = true) => {
             if (execDone && typeof this.props.onDone === 'function') {
                 this.props.onDone(result);
             }
+            return res;
         });
 
     return this.promise;
