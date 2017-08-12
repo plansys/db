@@ -9,7 +9,7 @@
     ],
     "require": {
         "plansys/yard": "^0.0.5",
-        "doctrine/dbal": "^2.5.12",
+        "plansys/dbal": "^5.0.0",
         "plansys/notorm": "^0.0.0"
     },
     "autoload": {
