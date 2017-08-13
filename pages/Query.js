@@ -21,7 +21,6 @@ this.page = false;
 this.promise = false;
 
 this.query = (params, execDone = true) => {
-    let url = window.yard.url.page.replace('[page]', this.page);
     if (typeof params == "undefined") {
         params = this.props.params;
     }
@@ -35,10 +34,10 @@ this.query = (params, execDone = true) => {
     });
 
     let page = this.props.page || this.page;
-    
+
     this.promise = requestLatest(
         {
-            url: url + "...db_" + page,
+            url: window.yard.url.page.replace('[page]', this.page + "...db_" + page),
             method: "POST",
             headers: {
                 "Content-type": "application/json"
