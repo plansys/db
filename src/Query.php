@@ -27,6 +27,7 @@ class Query
     {
         $params = json_decode($rawParams, true);
         $page = &$this->page;
+
         if (method_exists($page, 'query')) {
             $this->result = $page->query($this->app, $params);
         } else if (property_exists($page, 'query')) {

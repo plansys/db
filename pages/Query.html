@@ -1,32 +1,29 @@
 <js:this.state.tag>
     <js>
         if (this.state.debug && this.state.drag) {
-            return <el>
-                <div onMouseUp="js: this.doneDragging" 
+            return <div onMouseUp="js: this.doneDragging"
                     onMouseMove="js: this.mouseMove"
                     className="db-query-debug-overlay"></div>
-            </el>
         }
     </js>
     <js>
-        if (this.state.debug) { 
-            return <el>
-                <div className="js: 'db-query-debug ' + (this.state.drag ? 'drag' : '')" 
+        if (this.state.debug) {
+            return <div className="js: 'db-query-debug ' + (this.state.drag ? 'drag' : '')"
                     onMouseDown="js: this.mouseDown"
                     onMouseMove="js: this.mouseMove"
                     onMouseUp="js: this.doneDragging"
                     style="js: this.debugStyle()">
                     <div className="title">
                         <b>
-                            db:Query 
-                            | <js> this.props.page || this.page </js> 
+                            db:Query
+                            | <js> this.props.page || this.page </js>
                             | <js> this.state.loading ? '⏰ ' : '' </js>
                         </b>
                         <div className="query" >
                             <button onClick="js: this.debugToggle">
                                 <js>this.state.debugMax ? '▲' : '▼'</js>
                             </button>
-                            <button 
+                            <button
                                 disabled="js: !this.state.paramsValid"
                                 onClick="js: () => { this.query(this.state.params, false) } ">Query</button>
                         </div>
@@ -35,7 +32,7 @@
                     if (this.state.debugMax) {
                         return <el>
                             <div className="db-query-content">
-                                <div className="params-title">Params: 
+                                <div className="params-title">Params:
                                     <js>
                                         if (this.state.paramsValid) {
                                             return <el><b className="params-status-valid">VALID</b></el>;
@@ -44,32 +41,30 @@
                                         }
                                     </js>
                                 </div>
-                                <textarea 
+                                <textarea
                                     onMouseDown="js: e => { e.stopPropagation();}"
-                                    className="js: 'params ' + (!this.state.paramsValid ? 'invalid' : '')  " 
-                                    autoComplete="off" autoCorrect="off" 
+                                    className="js: 'params ' + (!this.state.paramsValid ? 'invalid' : '')  "
+                                    autoComplete="off" autoCorrect="off"
                                     autoCapitalize="off" spellCheck="false"
                                     onChange="js: this.paramsChange"
                                     row="5"
-                                    value="js: this.state.paramsText "/>
+                                    value="js: this.state.paramsText "></textarea>
                                 <div className="result-title">
                                     Result:
                                 </div>
-                                <textarea 
-                                    className="result"
-                                    onMouseDown="js: e => { e.stopPropagation();}"
-                                    autoComplete="off" autoCorrect="off" 
-                                    autoCapitalize="off" spellCheck="false"
-                                    value="js: (typeof this.state.result == 'string' 
-                                    ? this.state.result 
-                                    : JSON.stringify(this.state.result, null, 2))" />
-                            
+                                <div onMouseDown="js: e => { e.stopPropagation();}"
+                                     style="js: {
+                                        maxHeight: '200px',
+                                        overflowY: 'auto'
+                                     }"
+                                     dangerouslySetInnerHTML="js: {__html: (typeof this.state.result == 'string'
+                                    ? this.state.result
+                                    : JSON.stringify(this.state.result, null, 2)) }"></div>
                             </div>
                         </el>
                     }
                     </js>
                 </div>
-            </el>
         }
     </js>
 </js:this.state.tag>
